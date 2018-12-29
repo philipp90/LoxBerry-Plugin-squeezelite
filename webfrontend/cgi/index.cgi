@@ -251,8 +251,8 @@ foreach (split(/&/,$ENV{'QUERY_STRING'}))
 		# Prepare form defaults
 		# Read Squeezelite possible sound outputs
 		tolog("INFORMATION", "Calling squeezelite to get outputs");
-		my $squ_outputs = `sudo $installfolder/data/plugins/$psubfolder/squeezelite -l` or tolog("ERROR", "Failed to run squeezelite.");
-		
+		my $squ_outputs = `$installfolder/data/plugins/$psubfolder/squeezelite -l` or tolog("ERROR", "Failed to run squeezelite.");
+
 		# Sample output:
 
 # Output devices:
@@ -612,10 +612,10 @@ foreach (split(/&/,$ENV{'QUERY_STRING'}))
 	sub restartSqueezelite	
 	{
 		
-		my $killscript = "sudo $installfolder/webfrontend/cgi/plugins/$psubfolder/kill_squeezelite.sh";
+		my $killscript = "$installfolder/webfrontend/cgi/plugins/$psubfolder/kill_squeezelite.sh";
 		system($killscript);
 		
-		my $startscript = "sudo $installfolder/webfrontend/cgi/plugins/$psubfolder/start_instances.cgi > /dev/null";
+		my $startscript = "$installfolder/webfrontend/cgi/plugins/$psubfolder/start_instances.cgi > /dev/null";
 		system($startscript);
 	
 	}
